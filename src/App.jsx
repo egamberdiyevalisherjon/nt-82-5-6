@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Redirect from "./Components/Redirect.jsx";
+import Cart from "./Pages/Cart.jsx";
 import Details from "./Pages/Details.jsx";
 import Home from "./Pages/Home.jsx";
 import Login from "./Pages/Login.jsx";
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/details/:id" element={<Details />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<Redirect />} />
       </Routes>
     </div>

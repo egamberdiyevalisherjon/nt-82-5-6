@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const ProductCards = ({ products }) => {
+  const dispatch = useDispatch();
+
+  function handleAddToCart(product) {
+    dispatch({ type: "ADD_TO_CART", payload: product });
+  }
+
   return (
     <div className="row g-3">
       {products.map((product) => (
@@ -15,16 +22,16 @@ const ProductCards = ({ products }) => {
             <div className="card-body">
               <h5 className="card-title text-truncate">{product.title}</h5>
               <p className="card-text">
-                <div className="d-flex justify-content-between align-items-center">
+                <span className="d-flex justify-content-between align-items-center">
                   <span className="text-danger">${product.price}</span>
                   <span>
                     <i className="fa-solid fa-star text-warning"></i>{" "}
                     {product.rating.rate} / {product.rating.count}
                   </span>
-                </div>
-                <p className="product-description my-3">
+                </span>
+                <span className="product-description my-3">
                   {product.description}
-                </p>
+                </span>
               </p>
               <div className="d-flex g-3">
                 <Link
@@ -33,7 +40,12 @@ const ProductCards = ({ products }) => {
                 >
                   Read More
                 </Link>
-                <button className="btn btn-success col-6 ">Buy Now</button>
+                <button
+                  onClick={() => handleAddToCart(product)}
+                  className="btn btn-success col-6 "
+                >
+                  Add To Cart
+                </button>
               </div>
             </div>
           </div>

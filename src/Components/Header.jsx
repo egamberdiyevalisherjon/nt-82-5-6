@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 // import { useSelector } from "react-redux";
+import { cartContext } from "../context/index";
 
 const Header = () => {
   const navigate = useNavigate();
+
+  const { items } = useContext(cartContext);
 
   // const cart = useSelector((s) => s.cart);
 
@@ -42,9 +45,7 @@ const Header = () => {
           <li>
             <Link className="btn btn-primary fs-4" to="/cart">
               <i className="fa-solid fa-shopping-cart"></i>
-              <span className="badge text-bg-danger ms-2">
-                {/* {cart.items.length} */}0
-              </span>
+              <span className="badge text-bg-danger ms-2">{items.length}</span>
             </Link>
           </li>
           <li>

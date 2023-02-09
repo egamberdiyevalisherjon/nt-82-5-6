@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { cartContext } from "../context/index";
 
 const CartList = () => {
+  const { items, incItemCount, decItemCount } = useContext(cartContext);
+
   // const { items } = useSelector((s) => s.cart);
   // const dispatch = useDispatch();
 
-  // function handleIncItem(id) {
-  //   dispatch({ type: "INC_ITEM_COUNT", payload: id });
-  // }
+  function handleIncItem(id) {
+    incItemCount(id);
+    // dispatch({ type: "INC_ITEM_COUNT", payload: id });
+  }
 
-  // function handleDecItem(id) {
-  //   dispatch({ type: "DEC_ITEM_COUNT", payload: id });
-  // }
+  function handleDecItem(id) {
+    decItemCount(id);
+    // dispatch({ type: "DEC_ITEM_COUNT", payload: id });
+  }
 
   // function handleRemoveItem(id) {
   //   dispatch({ type: "REMOVE_FROM_CART", payload: id });
@@ -25,16 +30,16 @@ const CartList = () => {
           <h1>Your Cart</h1>
           <span>
             Total: $0
-            {/* {items
+            {items
               .reduce((p, c) => p + c.product.price * c.count, 0)
-              .toFixed(2)} */}
+              .toFixed(2)}
           </span>
         </div>
 
-        {/* {items.length === 0 && <h2 className="text-center">Cart is empty</h2>} */}
+        {items.length === 0 && <h2 className="text-center">Cart is empty</h2>}
 
         <ul className="list-group my-3">
-          {/* {items.map((item, index) => (
+          {items.map((item, index) => (
             <li
               key={index}
               className="list-group-item row d-flex align-items-center"
@@ -74,24 +79,21 @@ const CartList = () => {
               </div>
               <div className="col-md-1">
                 <button
-                  onClick={() => handleRemoveItem(item.product.id)}
+                  // onClick={() => handleRemoveItem(item.product.id)}
                   className="btn btn-danger"
                 >
                   <i className="fa-solid fa-trash"></i>
                 </button>
               </div>
             </li>
-          ))} */}
+          ))}
         </ul>
 
         <div className="d-flex justify-content-between">
           <Link to={"/"} className="btn btn-outline-success">
             <i className="fa-solid fa-arrow-left"></i> Back to Shopping
           </Link>
-          <button
-            // disabled={items.length === 0}
-            className="btn btn-success"
-          >
+          <button disabled={items.length === 0} className="btn btn-success">
             Proceed to Payment <i className="fa-solid fa-arrow-right"></i>
           </button>
         </div>

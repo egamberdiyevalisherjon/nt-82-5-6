@@ -6,8 +6,8 @@ import { ToastContainer } from "react-toastify";
 import axios from "axios";
 
 // Redux
-// import { Provider } from "react-redux";
-// import store from "./store/index";
+import { Provider } from "react-redux";
+import store from "./rt/index";
 
 // styles
 import "react-toastify/dist/ReactToastify.css";
@@ -18,9 +18,9 @@ axios.defaults.headers.access_token = localStorage.getItem("token");
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>
-    {/* <Provider store={store}> */}
+    <Provider store={store}>
       <App />
-    {/* </Provider> */}
+    </Provider>
     <ToastContainer />
   </Router>
 );

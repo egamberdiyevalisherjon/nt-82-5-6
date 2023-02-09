@@ -6,6 +6,17 @@ let initialState = {
 function cartReducer(state = initialState, action) {
   switch (action.type) {
     case "ADD_TO_CART": {
+      const item = state.items.find((i) => i.product.id === action.payload.id);
+
+      if (item) {
+        return {
+          ...state,
+          items: state.items.map((i) =>
+            i.product.id === action.payload ? { ...i, count: i.count } : i
+          ),
+        };
+      }
+
       return {
         ...state,
         items: [

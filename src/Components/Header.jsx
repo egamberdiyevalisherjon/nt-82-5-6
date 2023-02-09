@@ -2,13 +2,20 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+  const {
+    t,
+    i18n: { changeLanguage, language },
+  } = useTranslation();
   const navigate = useNavigate();
 
-  const cart = useSelector((s) => s.cart);
+  function handleChangeLanguage() {
+    changeLanguage(language === "uz" ? "en" : "uz");
+  }
 
-  console.log(cart);
+  const cart = useSelector((s) => s.cart);
 
   function handleLogout() {
     localStorage.removeItem("token");
@@ -26,18 +33,26 @@ const Header = () => {
         <ul className="list-unstyled d-flex align-items-center m-0 gap-3">
           <li>
             <Link className="btn btn-primary fs-4" to="/">
-              Home
+              {t("HEADER_LINKS.HOME")}
             </Link>
           </li>
           <li>
             <Link className="btn btn-primary fs-4" to="/">
-              About
+              {t("HEADER_LINKS.ABOUT")}
             </Link>
           </li>
           <li>
             <Link className="btn btn-primary fs-4" to="/">
               Contact
             </Link>
+          </li>
+          <li>
+            <button
+              onClick={handleChangeLanguage}
+              className="btn btn-primary fs-4"
+            >
+              {language === "uz" ? "English" : "O'zbekcha"}
+            </button>
           </li>
           <li>
             <Link className="btn btn-primary fs-4" to="/cart">

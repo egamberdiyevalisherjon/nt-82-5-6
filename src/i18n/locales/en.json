@@ -1,0 +1,12 @@
+{
+  "translation": {
+    "hello": "Hello {{USERNAME}}! Welcome to Najot Market! 🙂",
+    "HEADER_HOME_LINK_TEXT": "Home",
+    "HEADER_ABOUT_LINK_TEXT": "About",
+    "HEADER_LINKS": {
+      "HOME": "Home",
+      "ABOUT": "About"
+    },
+    "EMPTY_CART_TEXT": "Your cart is EMPTY"
+  }
+}

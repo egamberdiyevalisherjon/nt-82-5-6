@@ -13,6 +13,10 @@ import store from "./store/index";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 
+// i18n
+
+import "./i18n/index.js";
+
 axios.defaults.baseURL = "https://fakestoreapi.com";
 axios.defaults.headers.access_token = localStorage.getItem("token");
 

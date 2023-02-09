@@ -1,8 +1,10 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const CartList = () => {
+  const { t } = useTranslation();
   const { items } = useSelector((s) => s.cart);
   const dispatch = useDispatch();
 
@@ -31,7 +33,9 @@ const CartList = () => {
           </span>
         </div>
 
-        {items.length === 0 && <h2 className="text-center">Cart is empty</h2>}
+        {items.length === 0 && (
+          <h2 className="text-center">{t("EMPTY_CART_TEXT")}</h2>
+        )}
 
         <ul className="list-group my-3">
           {items.map((item, index) => (

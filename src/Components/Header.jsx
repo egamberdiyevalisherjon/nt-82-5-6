@@ -1,14 +1,14 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
 
-  const cart = useSelector((s) => s.cart);
+  // const cart = useSelector((s) => s.cart);
 
-  console.log(cart);
+  // console.log(cart);
 
   function handleLogout() {
     localStorage.removeItem("token");
@@ -43,7 +43,7 @@ const Header = () => {
             <Link className="btn btn-primary fs-4" to="/cart">
               <i className="fa-solid fa-shopping-cart"></i>
               <span className="badge text-bg-danger ms-2">
-                {cart.items.length}
+                {/* {cart.items.length} */}0
               </span>
             </Link>
           </li>

@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
 const ProductCards = ({ products }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  function handleAddToCart(product) {
-    dispatch({ type: "ADD_TO_CART", payload: product });
-  }
+  // function handleAddToCart(product) {
+  //   dispatch({ type: "ADD_TO_CART", payload: product });
+  // }
 
   return (
     <div className="row g-3">
@@ -41,7 +41,7 @@ const ProductCards = ({ products }) => {
                   Read More
                 </Link>
                 <button
-                  onClick={() => handleAddToCart(product)}
+                  // onClick={() => handleAddToCart(product)}
                   className="btn btn-success col-6 "
                 >
                   Add To Cart
